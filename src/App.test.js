@@ -110,7 +110,15 @@ describe('error when counter goes below 0', () => {
       const count = findByTestAttr(wrapper, 'count').text();
       expect(count).toBe('0');
     });
+
+    test('clicking increment clears the error', () => {
+      //find and click the increment button
+      const incButton = findByTestAttr(wrapper, 'increment-button');
+      incButton.simulate('click');
+      //check the class of the error message
+      const errorDiv = findByTestAttr(wrapper, 'error-message');
+      const errorHasHiddenClass = errorDiv.hasClass('hidden');
+      expect(errorHasHiddenClass).toBe(true);
+    });
   });
 });
-
-

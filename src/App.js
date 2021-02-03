@@ -17,7 +17,11 @@ function App() {
       </div>
       <button 
         data-test='increment-button'
-        onClick={ () => setCount(count + 1) }>Increment Counter</button>
+        onClick={ () => {
+          if( error ) { setError(false); }
+          setCount(count + 1)
+        } 
+        }>Increment Counter</button>
       <button
         data-test='decrement-button'
         onClick={ () => {

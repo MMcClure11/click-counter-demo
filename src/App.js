@@ -20,7 +20,17 @@ function App() {
         onClick={ () => setCount(count + 1) }>Increment Counter</button>
       <button
         data-test='decrement-button'
-        onClick={ () => setCount(count - 1) }>Decrement Counter</button>
+        onClick={ () => {
+          if(count > 0) {
+            setCount(count - 1)
+          } else {
+            setError(true);
+          }
+        } 
+        }
+          >
+            Decrement Counter
+        </button>
     </div>
   );
 }

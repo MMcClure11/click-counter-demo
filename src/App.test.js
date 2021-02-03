@@ -82,8 +82,29 @@ describe('error when counter goes below 0', () => {
 
     //use enzyme's '.hasClass()' method
     const errorHasHiddenClass = errorDiv.hasClass('hidden');
-    console.log(wrapper.debug());
+    // console.log(wrapper.debug());
     expect(errorHasHiddenClass).toBe(true)
+  });
+
+  describe('counter is 0 and decrement is clicked', () => {
+    //use describe here to use a 'beforeEach' for shared setup
+
+    //scope wrapper to describe so it can be used in beforeEach and tests
+    let wrapper 
+    beforeEach(() => {
+      //no need to set counter value here; default of 0 is good
+      wrapper = setup();
+      //find button and click
+      const button = findByTestAttr(wrapper, 'decrement-button');
+      button.simulate('click');
+    });
+
+    test('error shows', () => {
+      //check the class of the error message
+      const errorDiv = findByTestAttr(wrapper, 'error-message');
+      const errorHasHiddenClass = errorDiv.hasClass('hidden');
+      expect(errorHasHiddenClass).toBe(false);
+    });
   });
 });
 

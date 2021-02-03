@@ -105,6 +105,11 @@ describe('error when counter goes below 0', () => {
       const errorHasHiddenClass = errorDiv.hasClass('hidden');
       expect(errorHasHiddenClass).toBe(false);
     });
+
+    test('counter still displays 0', () => {
+      const count = findByTestAttr(wrapper, 'count').text();
+      expect(count).toBe('0');
+    });
   });
 });
 

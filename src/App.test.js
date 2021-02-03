@@ -73,4 +73,18 @@ describe('Decrement', () => {
   });
 });
 
+describe('error when counter goes below 0', () => {
+  test('error does not show when not needed', () => {
+    //implement by using a 'hidden' class for the error div
+    //use data-test value 'error-message' for the error div
+    const wrapper = setup();
+    const errorDiv = findByTestAttr(wrapper, 'error-message');
+
+    //use enzyme's '.hasClass()' method
+    const errorHasHiddenClass = errorDiv.hasClass('hidden');
+    console.log(wrapper.debug());
+    expect(errorHasHiddenClass).toBe(true)
+  });
+});
+
 

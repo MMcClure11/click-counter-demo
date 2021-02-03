@@ -4,12 +4,17 @@ import React from 'react';
 function App() {
 
   const [count, setCount] = React.useState(0);
+  const [error, setError] = React.useState(false);
+
   return (
-    <div data-test="component-app">
+    <div data-test="component-app" className="App">
       <h1 data-test='counter-display'>
         The counter is currently&nbsp;
         <span data-test='count'>{ count }</span>
       </h1>
+      <div data-test='error-message' className={`error ${ error ? '' : 'hidden'}`}>
+        The counter cannot go below 0
+      </div>
       <button 
         data-test='increment-button'
         onClick={ () => setCount(count + 1) }>Increment Counter</button>
